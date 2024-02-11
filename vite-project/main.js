@@ -2,6 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import { jokes } from './jokes.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -15,11 +16,21 @@ document.querySelector('#app').innerHTML = `
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
-    <h3>tehtävä</h3>
+    <h3>TEHTÄVÄ</h3>
+    <h3>1. Fetch API GET request - Vitsi API rajapinnasta</h3>
     <p class="read-the-docs">
-      Click on the Vite logo to learn more
+      Get your Chuck Norris joke of the day!
     </p>
+
+      <h1 id="show_joke"></h1>
+
+<button id="chuck">Hae vitsi</button>
   </div>
 `
 
+
 setupCounter(document.querySelector('#counter'))
+
+const getjoke = document.getElementById('chuck'); 
+const showjoke = document.getElementById('show_joke'); 
+jokes(getjoke, showjoke);
