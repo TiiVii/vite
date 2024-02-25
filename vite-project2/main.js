@@ -1,24 +1,27 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import './tehtavat.css';
+import javascriptLogo from './javascript.svg';
+import viteLogo from '/vite.svg';
+import { setupCounter } from './counter.js';
+import { showJoke } from './joke.js';
+import { showPics } from './catpics.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// tehtävät 2
+//import { showPics } from './pics.js';
+// tehtävä 4
+//import { showDiary } from './diary.js';
 
-setupCounter(document.querySelector('#counter'))
+document.querySelector('#app').innerHTML = 'Moi täällä ollaan';
+
+// haetaan nappula ja tarjotaan showJoke funktiolle
+let element = document.querySelector('.chuck');
+console.log(element);
+showJoke(element);
+showJoke(document.querySelector('.toinen'));
+
+showPics(document.querySelector('.pics'));
+
+// tehtävä 2
+//showPics(document.querySelector('.pics'));
+// tehtävä 4
+//showDiary(document.querySelector('.diary-area'));
