@@ -1,7 +1,7 @@
 [
     {
-      "name": "Sleeping cat",
-      "description": "In this picture the cat is sleeping.",
+      "name": "Mirror cat",
+      "description": "In this picture the cat is by a mirror.",
       "address": "http://placekitten.com/321/241"
     },
     {
@@ -10,8 +10,8 @@
       "address": "http://placekitten.com/421/251"
     },
     {
-      "name": "Eating cat",
-      "description": "In this picture the cat is eating.",
-      "address": "http://placekitten.com/421/251"
+      "name": "Edgy cat",
+      "description": "In this picture the cat is by an edge.",
+      "address": "https://placekitten.com/321/250"
     }
   ]
