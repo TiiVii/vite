@@ -6,6 +6,7 @@ import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 import { jokes } from './jokes.js'
 
+
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -32,30 +33,36 @@ document.querySelector('#app').innerHTML = `
 
     <figure>
       <img src="http://placekitten.com/300/200" alt="Kissakuva" />
-      <figcaption>Tähän tulee kissakuvan tiedot</figcaption>
+      <figcaption>Tässä kisu</figcaption>
     </figure>
 
     <button src="catpics.js" class="pics">Hae kissakuvat</button>
 
+
     <h3>3. Flexboxilla tehty kortti - Staattinen tieto</h3>
+    <section class="card-area">
+      <!-- yksittäinen kortti -->
+      <div class="card">
+        <!-- vasen puoli jossa kuva -->
+        <figure>
+          <div class="card-img" id="trigger">
+            <!-- Update the src attribute to point to gym.jpg -->
+            <img src="gym.jpg" alt="Gym">
+          </div>
+        </figure>
 
-<section class="card-area">
-  <!-- yksittäinen kortti -->
-  <div class="card">
-    <!-- vasen puoli jossa kuva -->
-    <div class="card-img" id="trigger">
-      <img src="gym.jpeg" width="136" alt="Gym" />
-    </div>
-
-    <!-- oikea puoli jossa päiväkirjamerkintä-->
-    <div class="card-diary">
-      <!-- tänne myös flexbox rakenne -->
-      <div class="card-img" id="trigger">
-      <img src="diary.jpeg" alt="diary" />
-    </div>
-    </div>
-  </div>
-</section>
+        <!-- oikea puoli jossa päiväkirjamerkintä-->
+        <div class="card-diary">
+          <!-- tänne myös flexbox rakenne -->
+          <figure>
+            <div class="card-img" id="trigger">
+              <!-- Update the src attribute to point to diary.jpg -->
+              <img src="diary.jpg" alt="Diary" width="50px" height="10%">
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
 
   </div>
 `
