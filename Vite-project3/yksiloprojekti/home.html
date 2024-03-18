@@ -7,149 +7,122 @@
     <title>Vite App</title>
   </head>
   <body>
+    <img src="logo.jpeg" alt="logo" style="width: 200px" />
     <ul>
-      <li><a href="home.html">Esimerkkisivusto</a></li>
-      <li><a href="index.html">Tietoja</a></li>
-      <li style="float: right" class="active logout"><a href="">Logout</a></li>
+      <li><a href="index.html">log</a></li>
+      <li><a href="home.html">home</a></li>
+      <li class="navbar-title">entry DIARY</li>
+      <li class="logout"><a href="">Logout</a></li>
     </ul>
+    
 
     <!-- <div id="app"></div> -->
 
-    <div class="user">Hei kirjautunut käyttäjä: <span id="name">NIMI TÄHÄN</span>!</div>
+    <div class="user">Day Diary <span id="name">Insert your name here</span></div>
 
-    <h3>/api/users</h3>
+    </div>
+      <div style="flex: 1">
+        <h2>Create new diary entry</h2>
+        <p>Fillout the below form</p>
 
-    <h3>Esimerkkitaulukko</h3>
+          <div class="container" id="diary-container">
+            <!-- Form for new diary entry -->
+            <form method="post" id="entry_form">
+              <label for="entry">Add your mood: </label>
+              <select id="entry" name="entry">
+                <option value="placeholder" disabled selected hidden>Select your mood</option>
+                <option value="happy">Happy</option>
+                <option value="content">Content</option>
+                <option value="angry">Angry</option>
+                <option value="sad">Sad</option>
+                <option value="overwhelmed">Overwhelmed</option>
+              </select>
 
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>User Name</th>
-          <th>User Level</th>
-          <th>Info</th>
-          <th>Delete</th>
-          <th>ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Dom</td>
-          <td>6000</td>
-          <td><button class="check" data-id="1">Info</button></td>
-          <td><button class="del" data-id="1">Delete</button></td>
-          <td>1</td>
-        </tr>
-        <!--  <tr class="active-row"> -->
-        <tr>
-          <td>Melissa</td>
-          <td>5150</td>
-          <td><button class="check" data-id="2">Info</button></td>
-          <td><button class="del" data-id="2">Delete</button></td>
-          <td>2</td>
-        </tr>
-        <!-- and so on... -->
-        <!-- Delete nappula poistaa käyttäjän-->
-        <!-- käytämme tässä apuna data-attribuutteja-->
-        <!-- # Delete user
-              DELETE http://127.0.0.1:3000/users/:id
-        -->
-      </tbody>
+              <label for="duration">Add the amount of your daily breakdowns:</label>
+              <input
+                type="number"
+                id="duration"
+                name="weight"
+                step="1"
+                placeholder="Daily breakdowns"
+                step="0.1"
+                required
+              />
+
+              <label for="crying">entry crying:</label>
+              <input
+                type="number"
+                id="duration"
+                name="weight"
+                step="1"
+                placeholder="Daily crying"
+                step="0.1"
+                required
+              />
+
+              <label for="notes">Describe your day:</label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="8"
+                placeholder="Enter additional info"
+                style="resize: none"
+                maxlength="250"
+              ></textarea>
+              <!-- Submit button -->
+              <button type="submit" id="entry_submit">Create diary entry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
     </table>
 
     <div class="forms">
-      <div style="flex: 1">
-        <h3>GET and DELETE</h3>
+      <div style="flex: 2">
+
+        <h2>Your entrys</h2>
 
         <p>
-          Hae käyttäjän tiedot painamalla alla olevaa nappia. Tämä hakee tiedot sekä luo taulukon
-          tbody osan. Jokaiselle riville luodaan nappula. Info hakee yksittäisen rivin tiedot ja
-          avaa dialogin. Delete poistaa yksittäisen rivin ja varmistaa tapahtuman confirm()
-          metodilla.
+          Please push the "search for entrys"-button first
+          for application to put the data into the list. 
+          Please use the second button for opening and closing the list.
+          <br>
+          <br>
+          All entrys can be deleted or altered.
         </p>
 
-        <pre><code>
-          # Get all users (requires token)
-          GET http://127.0.0.1:3000/api/users
-          
-          # Get user by id (requires token)
-          GET http://127.0.0.1:3000/api/users/:id
-          
-          # Delete user (requires token)
-          DELETE http://127.0.0.1:3000/api/users/:id
-          </code></pre>
-
-        <table class="styled-table">
+        <table class="result-table">
+          <button class="get_entries">Search for entrys</button>
+          <button class="toggle_list">Open/Close list</button>
           <thead>
             <tr>
-              <th>User Name</th>
-              <th>User Level</th>
-              <th>Info</th>
-              <th>Delete</th>
-              <th>ID</th>
+              <th>Date</th>
+              <th>entry</th>
+              <th>crying</th>
+              <th>Notes</th>
+              <th>Edit entry</th>
+              <th>Delete entry?</th>
             </tr>
           </thead>
           <tbody class="tbody">
-            <!-- tänne haetaan kaikki käyttäjät -->
-            <!-- # Get all users -->
-            <!-- GET http://127.0.0.1:3000/api/users -->
+            <!-- tänne haetaan kaikki merkinnät -->
+            <!-- # Get all entries -->
+            <!-- GET http://127.0.0.1:3000/api/entries -->
           </tbody>
         </table>
 
-        <button class="get_users">Hae users tiedot</button>
-      </div>
-      <div style="flex: 1">
-        <h3>KOTIEHTÄVÄ: PUT and FORMS</h3>
-
-        <p>
-          Lisää ja päivitä käyttäjiä eli users tiedot formin avulla. Formi lisää uuden käyttäjän
-          nappulasta 'post'. Huomio, että PUT metodi toimii vain kirjatuneen käyttäjän osalta. Eli
-          voit vain muokata käyttäjää, millä olet parhaimmillaan kirjautuneena. Jatkossa olisi
-          fiksua hakea käyttäjän tiedot suoraan formien INPUT kenttiin.
-        </p>
-
-        <pre><code>
-          
-          # Update user's own data (requires token)
-          PUT http://127.0.0.1:3000/api/users/
-          content-type: application/json
-          
-          {
-            "username": "test-update4",
-            "password": "test-pw-update4",
-            "email": "update4@example.com"
-          }
-          </code></pre>
-
-        <form class="addform">
-          <!-- tänne formi -->
-          <!-- https://www.w3schools.com/css/css_form.asp -->
-          <!-- https://www.w3schools.com/css/tryit.asp?filename=trycss_form_padding -->
-
-          <!-- formin avulla testaamme create ja update user reittejä -->
-        </form>
-      </div>
+        
+      
     </div>
+
+    <div id="snackbar-target"></div>
 
     <dialog class="info_dialog">
       <p>
-        <!-- tänne haetaan yksittäinen valittu käyttäjät -->
-        <!-- <div>UserID: <span>Id</span></div>
-        <div>UserName: <span>Username</span></div>
-        <div>Email: <span>Email</span></div>
-        <div>Role: <span>Role</span></div>  -->
       </p>
       <button autofocus>Close</button>
     </dialog>
-
-    <h3>Yksilötehtävän: /api/entries</h3>
-
-    <p>Hae käyttäjän (user: 1) entires tiedot ja console.log</p>
-    <pre>
-      # Get entries by id
-      GET http://localhost:3000/api/entries/:id
-    </pre>
-    <button class="get_entry">Hae (user:1) entries</button>
-
     <script type="module" src="/home.js"></script>
   </body>
 </html>

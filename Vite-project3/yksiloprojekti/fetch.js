@@ -19,7 +19,7 @@ const fetchData = async (url, options = {}) => {
     console.error('fetchData() error', error);
     jsonData = {};
   }
-  //console.log(jsonData);
+  console.log(jsonData);
   return jsonData;
 };
 

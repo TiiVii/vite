@@ -1,4 +1,4 @@
-import './style.css';
+import './home.css';
 import { fetchData } from './fetch.js';
 
 const bt1 = document.querySelector('.get_entry');
