@@ -1,4 +1,4 @@
-import './style.css';
+import './index.css';
 import { fetchData } from './fetch.js';
 
 // haetaan nappi josta lähetetään formi ja luodaan käyttäjä

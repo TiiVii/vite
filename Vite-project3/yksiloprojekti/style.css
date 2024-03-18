@@ -16,13 +16,17 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  background-color: #009879;
+}
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #fd8208;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #fd8208;
 }
 
 html {
@@ -49,7 +53,7 @@ h1 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: rgb(224, 208, 208);
 }
 
 
@@ -66,7 +70,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffb964;
 }
 button:focus,
 button:focus-visible {
@@ -102,6 +106,15 @@ button.update {
 
 button.del {
   background-color: #f2a29448;
+}
+
+#entry_form {
+  padding: 20px;
+  background-color: #c83d3d;
+}
+
+#diary-container {
+  background-color: #ff724f;
 }
 
 ::backdrop {
@@ -141,7 +154,7 @@ li a:hover {
 }
 
 li a:hover:not(.active) {
-  background-color: #c83d3d;
+  background-color: #d7a37b;
 }
 
 .active {
@@ -248,7 +261,7 @@ input[type=text], input[type=password], input[type=email] {
 
 }
 .create_user_form input:valid {
-  border-left-color: greenyellow
+  border-left-color: rgb(108, 186, 203)
 }
 
 /* Koodiesimerkin tyylittely */
