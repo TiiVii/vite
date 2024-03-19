@@ -6,21 +6,23 @@
  *
  * @returns {Object} response json data
  */
-const fetchData = async (url, options = {}) => {
+const fetchData = async(url,options={})=>{
   let jsonData;
   try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-    }
+      const response = await fetch(url, options);
+      console.log(url, options)
+      console.log(response)
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+      }
 
-    jsonData = await response.json();
+      jsonData = await response.json();
   } catch (error) {
-    console.error('fetchData() error', error);
-    jsonData = {};
+      console.error('fetchData() error', error);
+      jsonData = {};
   }
-  //console.log(jsonData);
   return jsonData;
 };
+
 
 export { fetchData };

@@ -28,7 +28,7 @@ createUser.addEventListener('click', async (evt) => {
   const password = document.querySelector('input[name=password]').value;
   const email = document.querySelector('input[name=email]').value;
 
-
+  
   const data = {
     username: username,
     password: password,
@@ -44,6 +44,7 @@ createUser.addEventListener('click', async (evt) => {
     },
     body: JSON.stringify(data), 
   };
+  
 
 
   try {
