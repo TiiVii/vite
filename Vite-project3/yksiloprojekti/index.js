@@ -1,159 +1,128 @@
 import './index.css';
 import { fetchData } from './fetch.js';
 
-// haetaan nappi josta lähetetään formi ja luodaan käyttäjä
-const createUser = document.querySelector('.createuser');
+// PAGE LOAD
+// clear localstorage
+window.addEventListener('load', () => {
+  clearLocalStorage();
+});
 
+// USER CREATION
+const createUser = document.querySelector('.create_user');
 createUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  console.log('Nyt luodaan käyttäjä');
+  console.log('Creating a new account');
 
   const url = 'http://127.0.0.1:3000/api/users';
 
-  // # Create user
-  // POST http://127.0.0.1:3000/api/users
-  // content-type: application/json
-
-  const form = document.querySelector('.create_user_form');
-
-  // Validointi, jos päällä niin tutkitaan onko kentät kunnossa
-
-  // Check if the form is valid
+  // get form and check if valid
+  const form = document.querySelector('.submit_user');
   if (!form.checkValidity()) {
     // If the form is not valid, show the validation messages
     form.reportValidity();
     return; // Exit function if form is not valid
   }
 
-  console.log('Tiedot valideja, jatketaan');
+  // user data
+  const username = document.querySelector('input[name=username]').value;
+  const password = document.querySelector('input[name=password]').value;
+  const email = document.querySelector('input[name=email]').value;
 
-  const username = form.querySelector('input[name=username]').value;
-
-  // kokeillaan ensin kovakoodattuna
-  // const body = {
-  //   username: 'testii',
-  //   password: 'testii',
-  //   email: 'testii@testii.fi',
-  // };
 
   const data = {
     username: username,
-    password: form.querySelector('input[name=password]').value,
-    email: form.querySelector('input[name=email]').value,
+    password: password,
+    email: email
   };
 
+  console.log(data)
+
   const options = {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    body: JSON.stringify(data), 
   };
 
-  // fetchData(url, options).then((data) => {
-  //   // käsitellään fetchData funktiosta tullut JSON
-  //   console.log(data);
-  // });
 
-  // parempi ehkä käyttää samaa muotoilua
   try {
     const responseData = await fetchData(url, options);
     console.log(responseData);
   } catch (error) {
     console.error(error);
   }
+  
 });
 
-// haetaan nappi josta haetaan formi ja logataan sisään
-// tästä saadaan TOKEN
+// LOGIN ja TOKEN
 const loginUser = document.querySelector('.loginuser');
-
 loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  console.log('Nyt logataan sisään');
+  console.log('Ny mennään sisään');
 
-  // # Login
-  // POST http://localhost:3000/api/auth/login
-  // content-type: application/json
+  const url = 'http://127.0.0.1:3000/api/auth/login';
 
-  // {
-  //   "username": "user",
-  //   "password": "secret"
-  // }
-
-  const url = 'http://localhost:3000/api/auth/login';
-
+  // get form and it's values
   const form = document.querySelector('.login_form');
+  const username = form.querySelector('input[name=username]').value;
+  const password = form.querySelector('input[name=password]').value;
 
+  // insert values into data
   const data = {
-    username: form.querySelector('input[name=username]').value,
-    password: form.querySelector('input[name=password]').value,
+    username: username,
+    password: password,
   };
 
   const options = {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    body: JSON.stringify(data),
   };
 
-  // 1. Käy Ulla läpi tämä auth sivu ja sync/await rakenne vaihtoehto
-  // Tähän redirect
-  // samoin voi laittaa userID:n talteen..
-
   fetchData(url, options).then((data) => {
-    // käsitellään fetchData funktiosta tullut JSON
     console.log(data);
     console.log(data.token);
-    localStorage.setItem('token', data.token);
-    // jos on token, cpnsole loggaa ett kaikki hyvin
-    // jos ei niin console loggaa että tokenia ei ollut
-    // TÄSSÄ oieasta kannattaa tehdä niin että
-    // fetch.js palauttaa BE puolen validointivirheen
-    // joka käsitellään
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user_id", data.user.user_id);
 
     if (data.token == undefined) {
-      alert('Unauth user: käyttäjänimi tai salasana ei oikein');
-      // esim. ottaa esiin piilotettu kenttä
+      alert('Username or the password is wrong')
     } else {
-      alert(data.message);
-      localStorage.setItem('name', data.user.username);
+      // alert('Hienosti kirjauduit sisään good job!')
       window.location.href = 'home.html';
-    }
+    };
 
     logResponse('loginResponse', `localStorage set with token value: ${data.token}`);
   });
 });
 
+
 // Haetaan nappi josta testataan TOKENIN käyttöä, /auth/me
-const meRequest = document.querySelector('#meRequest');
+const meRequest = document.querySelector('.loginuser');
 meRequest.addEventListener('click', async () => {
-  console.log('Testataan TOKENIA ja haetaan käyttäjän tiedot');
+  console.log('Testing token and retrieving the user info');
 
-  // # Get user info by token (requires token)
-  // GET http://localhost:3000/api/auth/me
-  // Authorization: Bearer (put-user-token-here)
-
-  const url = 'http://localhost:3000/api/auth/me';
-  const muntokeni = localStorage.getItem('token');
-  console.log('Tämä on haettu LocalStoragesta', muntokeni);
+  const url = 'http://127.0.0.1:3000/api/auth/me';
+  const myToken = localStorage.getItem('token');
+  console.log(myToken)
 
   const options = {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    method: 'GET',
     headers: {
-      Authorization: 'Bearer: ' + muntokeni,
+      Authorization: 'Bearer: ' + myToken,
     },
   };
 
-  console.log(options);
-
+  console.log(options)
   fetchData(url, options).then((data) => {
-    // käsitellään fetchData funktiosta tullut JSON
     console.log(data);
     logResponse('meResponse', `Authorized user info: ${JSON.stringify(data)}`);
   });
 });
+
 
 // Haetaan nappi josta tyhjennetään localStorage
 const clear = document.querySelector('#clearButton');
@@ -161,11 +130,25 @@ clear.addEventListener('click', clearLocalStorage);
 
 // Apufunktio, kirjoittaa halutin koodiblokin sisään halutun tekstin
 function logResponse(codeblock, text) {
-  document.getElementById(codeblock).innerText = text;
+  const element = document.getElementById(codeblock);
+  if (element) {
+    element.innerText = text;
+  } else {
+    console.log(`Element with ID '${codeblock}' not found.`);
+  }
 }
 
 // Apufunktio, Tyhjennä local storage
 function clearLocalStorage() {
   localStorage.removeItem('token');
+  localStorage.removeItem('user_id');
   logResponse('clearResponse', 'localStorage cleared!');
 }
+
+// popup handling
+const popup = document.getElementById('popup');
+const overlay = document.getElementById('overlay');
+const openPopupBtn = document.querySelector('.openPopup');
+const closePopupBtn = document.getElementById('closePopup');
+const createAccountBtn = document.getElementById('createAccount');
+

@@ -4,64 +4,66 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yksilöprojekti</title>
+    <title>Vite App</title>
   </head>
 
   <body>
-    <img src="logo.png" alt="logo" style="width: 200px" />
-   <!--Navigointi bar-->>
-    <ul>
-      <li><a href="index.html">log</a></li>
-      <li><a href="home.html">home</a></li>
-      <li class="navbar">DAY DIARY</li>
-      <li class="logout"><a href="">Logout</a></li>
-    </ul>
-    <h3>CREATE USER</h3>
-    <form class="create_user">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="username" />
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="password" />
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="example@email.com" />
-      <input name="submit" type="submit" value="Submit user" class="submit_user" />
-    </form>
 
+    <div class="top">
+      <img src="logo.png" alt="logo" style="width: 300px" />
 
+      <h1>MoodBoard</h1>
+    </div>
 
-    <h3>LOGIN USER</h3>
-    <div>
-      <form class="login_form">
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="username" />
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" />
-        <input name="submit" type="submit" value="Login" class="loginuser" />
-      </form>
-      <br />
-    
-      <div id=hidden>
-        <h5>TOKEN:</h5>
-        <div id="loginResponse"></div>
-      <h3>USER INFO</h3>
-      <div>
-        <pre><code>
-          # Get user info by token (requires token)
-          GET http://localhost:3000/api/auth/me
-          Authorization: Bearer (put-user-token-here)</code></pre>
-        <button id="meRequest">Make an "authenticated" request</button>
-        <br />
-        <h5>USER INFO:</h5>
-        <div id="meResponse"></div>
+    <div class="box">
+      <!-- create a user -->
+      <div class="creating">
+        <h3>CREATE USER</h3>
+        <form class="create_user">
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="username" />
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password" />
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="example@email.com" />
+          <input name="submit" type="submit" value="Create user" class="submit_user" />
+        </form>
       </div>
-      <h3>Local Storage</h3>
+
+
+      <div class="login">
+      <h3>LOGIN USER</h3>
       <div>
-        <button id="clearButton">Clear localStorage</button>
+        <form class="login_user">
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="username" />
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password" />
+          <input name="submit" type="submit" value="Login" class="loginuser" />
+        </form>
         <br />
-        <code id="clearResponse"></code>
       </div>
     </div>
-  </body>
+    
+  <div class="hidden">
+    <pre><code>
+      # Get user info by token (requires token)
+      GET http://localhost:3000/api/auth/me
+      Authorization: Bearer (put-user-token-here)</code></pre>
+    <button id="meRequest">Make an "authenticated" request</button>
+    <br />
+    <h5>USER INFO:</h5>
+    <div id="meResponse"></div>
+  </div>
 
-  <script type="module" src="/index.js"></script>
+  <h3 class="hidden">Local Storage</h3>
+    <div class="hidden">
+      <button id="clearButton">Clear localStorage</button>
+      <br />
+      <code id="clearResponse"></code>
+    </div>
+
+    <script type="module" src="/index.js"></script>
+
+  </body>
 </html>
