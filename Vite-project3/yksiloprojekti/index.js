@@ -64,7 +64,7 @@ loginUser.addEventListener('click', async (evt) => {
   const url = 'http://127.0.0.1:3000/api/auth/login';
 
   // get form and it's values
-  const form = document.querySelector('.login_form');
+  const form = document.querySelector('.login_user');
   const username = form.querySelector('input[name=username]').value;
   const password = form.querySelector('input[name=password]').value;
 
@@ -144,11 +144,3 @@ function clearLocalStorage() {
   localStorage.removeItem('user_id');
   logResponse('clearResponse', 'localStorage cleared!');
 }
-
-// popup handling
-const popup = document.getElementById('popup');
-const overlay = document.getElementById('overlay');
-const openPopupBtn = document.querySelector('.openPopup');
-const closePopupBtn = document.getElementById('closePopup');
-const createAccountBtn = document.getElementById('createAccount');
-
