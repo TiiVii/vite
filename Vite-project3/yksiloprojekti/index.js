@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 });
 
 // USER CREATION
-const createUser = document.querySelector('.create_user');
+const createUser = document.querySelector('.submit_user');
 createUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Creating a new account');
@@ -16,7 +16,7 @@ createUser.addEventListener('click', async (evt) => {
   const url = 'http://127.0.0.1:3000/api/users';
 
   // get form and check if valid
-  const form = document.querySelector('.submit_user');
+  const form = document.querySelector('.create_user');
   if (!form.checkValidity()) {
     // If the form is not valid, show the validation messages
     form.reportValidity();
