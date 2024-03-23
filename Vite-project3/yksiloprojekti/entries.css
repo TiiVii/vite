@@ -23,7 +23,7 @@ body {
 
 #bottom {
     background-color: rgb(255,244,230, 0.6);
-    border-radius: 30%;
+    border-radius: 20px;
     margin: 20px;
     padding: 20px;
 }

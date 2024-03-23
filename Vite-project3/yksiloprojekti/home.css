@@ -32,11 +32,17 @@ body {
   background-color: #4b3832;
 }
 
+#bottom {
+  background-color: rgb(255,244,230, 0.6);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 10px;
-  border-radius: 5px;
   overflow: hidden;
   background-color: #4b3832;
 }

@@ -145,3 +145,21 @@ function clearLocalStorage() {
   localStorage.removeItem('user_id');
   logResponse('clearResponse', 'localStorage cleared!');
 }
+
+
+//popup
+// success entry popup
+const openSuccessBtn = document.querySelector('.submit_user');
+const successOverlay = document.getElementById("successOverlay");
+const closesuccessBtn = document.getElementById("closeSuccess");
+
+openSuccessBtn.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  successPopup.style.display = "block";
+  successOverlay.style.display = "block";
+});
+
+closesuccessBtn.addEventListener("click", function () {
+  successPopup.style.display = "none";
+  successOverlay.style.display = "none";
+});
