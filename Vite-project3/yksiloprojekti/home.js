@@ -6,7 +6,7 @@ const logout = document.querySelector('.activelogout');
 
 const handleLogout = function(evt) {
   evt.preventDefault();
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 };
 
 logout.addEventListener('click', handleLogout);
@@ -53,7 +53,7 @@ createEntry.addEventListener('click', async (evt) => {
   // get form and check validity
   const form = document.querySelector('.entry_form');
   if (!createEntry.checkValidity()){
-    // Input didnt pass validation
+    // Input didn't pass validation
     createEntry.reportValidity()
     return;
   // Check if user has changed input in dropdown menu from the placeholder
@@ -80,7 +80,7 @@ async function gatherNewEntryData() {
     return;
   }
 
-  // insert entry form values into data
+  // Insert entry form values into data
   const newEntrydata = {
     user_id: user_id,
     entry_date: entry_date,
@@ -129,7 +129,7 @@ async function postData(url, options = {}) {
   return response.json();
 }
 
-// POPUP HANDLING
+// Popups
 const popup = document.getElementById('popup');
 const overlay = document.getElementById('overlay');
 const openPopupBtn = document.querySelector('.new');

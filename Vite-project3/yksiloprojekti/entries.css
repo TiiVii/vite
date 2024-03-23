@@ -2,6 +2,7 @@
 :root {
     font-family: 'Courier New', Courier, monospace; /* Retro font */
     line-height: 1.6;
+    font-size: 100%;
 }
 
 * {
@@ -16,8 +17,16 @@ body {
     background-image: url(retro.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed; 
+    overflow-y: scroll; 
 }
 
+#bottom {
+    background-color: rgb(255,244,230, 0.6);
+    border-radius: 30%;
+    margin: 20px;
+    padding: 20px;
+}
 
 /* Navigation */
 .hamburger {
@@ -85,8 +94,7 @@ h2 {
     margin: 60px;
     text-align: center;
     font-size: 40px;
-    color: #29333C;
-    box-shadow: 0 0 100px rgb(237, 230, 230);
+    color: #3c2f2f;
     border-radius: 20px;
 }
 
@@ -95,8 +103,7 @@ h2 {
     text-align: center;
     font-size: 25px;
     font-weight: bolder;
-    color: #29333C;
-    padding: 5%;
+    color: #3c2f2f;
 }
 
 
@@ -170,7 +177,7 @@ h2 {
     padding: 15px 28px;
     border: 2px solid #be9b7b;
     border-radius: 17px;
-    background-color: 	#4b3832;
+    background-color: #4b3832;
     color: #fff4e6;
     margin: 0 10px;
     font-size: 16px;

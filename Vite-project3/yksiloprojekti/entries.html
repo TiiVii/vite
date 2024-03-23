@@ -10,7 +10,7 @@
 
 <body>
     <ul class="navigation">
-            <li><a href="#home" class="home">New entry</a></li>
+            <li><a href="#home" class="home">Home</a></li>
             <li style="float: right" class="activelogout"><a href="">Logout</a></li>
     </ul>
 
@@ -19,36 +19,38 @@
         <li style="float: right" class="activelogout"><a href="">Logout</a></li>
     </div>
 
-    <h2>Mood Day</h2>
+    <div id="bottom">
+        <h2>Mood Day</h2>
 
-    <div class="user">Welcome ✨<span id="username">NAME</span>✨ <br>here are your past entries:</div>
+        <div class="user">Welcome ✨<span id="username">NAME</span>✨ <br>here are your past entries:</div>
 
-    <div class="tableWrapper">
-        <table class="entriesTable">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Mood</th>
-                    <th>Crying</th>
-                    <th>Breakdowns</th>
-                    <th>Notes</th>
-                    <th>id</th>
-                </tr>
-            </thead>
-            <tbody class="tableBody">
-                <!-- tänne haetaan kaikki merkinnät -->
-            </tbody>
-        </table>
-    </div>
-
-    <div class="editEntries">
-        <div class="editEntry">
-            <h3>Edit an entry</h3>
-            <button class="editBtn">edit</button>
+        <div class="tableWrapper">
+            <table class="entriesTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Mood</th>
+                        <th>Crying</th>
+                        <th>Breakdowns</th>
+                        <th>Notes</th>
+                        <th>id</th>
+                    </tr>
+                </thead>
+                <tbody class="tableBody">
+                    <!-- tänne haetaan kaikki merkinnät -->
+                </tbody>
+            </table>
         </div>
-        <div class="deleteEntry">
-            <h3>Delete an entry</h3>
-            <button class="deleteBtn">delete</button>
+
+        <div class="editEntries">
+            <div class="editEntry">
+                <h3>Edit an entry</h3>
+                <button class="editBtn">edit</button>
+            </div>
+            <div class="deleteEntry">
+                <h3>Delete an entry</h3>
+                <button class="deleteBtn">delete</button>
+            </div>
         </div>
     </div>
 

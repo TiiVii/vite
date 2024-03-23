@@ -1,64 +1,80 @@
+/* General */
 :root {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-  
-  
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-      min-width: 320px;
-      min-height: 100vh;
-      margin: 16px;
-      background-color: rgb(180, 220, 232);
-      background-image: url(bgimage.webp);
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
+  font-family: 'Courier New', Courier, monospace; /* Retro font */
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 16px;
+  background-color: #be9b7b;
+  background-image: url(retro.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  overflow-y: scroll; 
+}
 
     .top {
-      /* justify-content: space-between; */
       display: flex;
+      margin: 40px;
     }
 
     img {
       position: sticky;
-      padding-left: 100px;
     }
+
+    h1 {
+      font-size: 100px;
+      text-align: center;
+    }
+
+  /* Below */
   .hidden {
       display: none;
     }
   
     .box {
-      justify-content: center;
+      justify-content: space-evenly;
       display: flex;
-      padding-left: 15%;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255,244,230, 0.4);
+      margin: 10%;
+      border-radius: 50px;
     }
     
   /* form styling */
   .login {
       width: 360px;
-      margin: auto;
+    }
+
+    .submit_user {
+      outline: 0;
+      background: #fff4e6;
+      width: 100%;
+      border: 0;
+      padding: 15px;
+      color: #3c2f2f;
+      font-size: 17px;
+      cursor: pointer;
     }
     
     form {
       position: relative;
       z-index: 1;
-      background: #022b69;
+      background: #854442;
       max-width: 360px;
       margin: 0 auto 100px;
       padding: 45px;
       text-align: center;
       box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-      border-radius: 30px;
+      border-radius: 20px;
       font-size: 18px;
       color: #f2f2f2;
       float: inline-start;
@@ -79,18 +95,16 @@
     
     .login_user {
       justify-content: space-around;
-
     }
 
     .loginuser {
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       outline: 0;
-      background: #f2f2f2;
+      background: #fff4e6;
       width: 100%;
       border: 0;
       padding: 15px;
-      color: #050505;
-      font-size: 14px;
+      color: #3c2f2f;
+      font-size: 17px;
       cursor: pointer;
     }
     
@@ -120,31 +134,4 @@
     
     .hiddentext {
       color: #29333C;
-    }
-    
-    form .not_registered {
-      margin: 15px 0 0;
-      color: #f2f2f2;
-      font-size: 13px;
-    }
-    
-    form .not_registered a {
-      color: #5D7283;
-      text-decoration: none;
-    }
-    
-    /* popup styling */
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); 
-      display: none;
-    }
-    
-    .registerHeading {
-      text-align: center;
-      font-size: 25px;
     }
