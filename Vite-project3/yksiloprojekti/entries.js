@@ -234,10 +234,10 @@ closeEditBtn.addEventListener("click", function () {
 // edit modal
 const editModal = document.getElementById("editModal");
 const closeModalBtn = document.querySelector(".closeModal");
-const saveEntries = document.getElementById("editEntryForm");
+const saveEntries = document.getElementById("editModal");
 
 function openEditModal(editId) {
-  console.log("Opening edit modal for entry ID:", editId);
+  console.log("Opening entry:", editId);
 
   // Call specificEntry function to fetch the data of the entry
   specificEntry(editId)
@@ -272,11 +272,10 @@ closeModalBtn.addEventListener("click", function () {
 
 saveEntries.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  console.log("tää on se mitä")
   editEntry();
   editModal.style.display = "none";
   editOverlay.style.display = "none";
-  location.reload();
+ // location.reload();
 });
 
 
@@ -334,6 +333,7 @@ const closeDeleteBtn = document.getElementById("closeDelete");
 const deleteEntryBtn = document.querySelector(".submitDelete");
 
 openDeleteBtn.addEventListener("click", function (evt) {
+  console.log("here")
   evt.preventDefault();
   deletePopup.style.display = "block";
   deleteOverlay.style.display = "block";
