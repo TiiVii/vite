@@ -64,6 +64,10 @@ body {
       font-size: 17px;
       cursor: pointer;
     }
+    .submit_user:hover{
+      background-color: #be9b7b;
+
+    }
     
     form {
       position: relative;
@@ -106,6 +110,10 @@ body {
       color: #3c2f2f;
       font-size: 17px;
       cursor: pointer;
+    }
+
+    .loginuser:hover {
+      background-color: #be9b7b;
     }
     
     .createuser {
