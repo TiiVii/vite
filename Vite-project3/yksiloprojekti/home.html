@@ -8,26 +8,24 @@
   </head>
   <body>
     <ul class="navigation">
-      <li class="home"><a href="#home">New entry</a></li>
-      <li class="pastNav"><a href="#entries">Past entries</a></li>
       <li style="float: right" class="activelogout"><a href="">Logout</a></li>
     </ul>
 
-    <!-- <div id="app"></div> -->
-
-    <!-- <div class="user">Hei kirjautunut käyttäjä: <span id="name">NIMI TÄHÄN</span>!</div> -->
-
-    <h1>
-      Welcome to <br>
-      Pahoinvointi Päiväkirja
-    </h1>
+    <div class="hamburger">
+      <li><a href="#home" class="home">New entry</a></li>
+      <li style="float: left" class="activelogout"><a href="">Logout</a></li>
+  </div>
 
 
-    <div class="yesorno">
-      <h2>Would you like to make a new diary entry?</h2>
+    <h1>Mood Day</h1>
+    <h2>Welcome ✨<span id="username">NAME</span>✨ to keeping track of your feelings, <br>cryings and breakdowns.</h2>
+
+
+    <div class="choose">
+      <h3>Make a new entry or see past entries:</h3>
       <div class="button-group">
-          <button class="yes">yes</button>
-          <button class="no">no</button>
+          <button class="new">Make a new entry</button>
+          <button class="past">see past entries</button>
       </div>
     </div>
   
@@ -64,11 +62,6 @@
           <!-- <label for="submit" class="hiddentext">'</label> -->
           <input name="submit" type="submit" value="submit" class="createEntry"/>
         </form>
-    </div>
-
-    <div class="pastEntries">
-      <h2>or see past entries?</h2>
-        <button class="pastBtn">see past entries</button>
     </div>
 
     <script type="module" src="/home.js"></script>

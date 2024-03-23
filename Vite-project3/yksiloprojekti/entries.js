@@ -39,7 +39,7 @@ const gohome = function (evt) {
 
 home.addEventListener("click", gohome);
 
-// GET USERNAME
+// Get username
 document.addEventListener("DOMContentLoaded", showUserName);
 
 async function showUserName() {
@@ -55,7 +55,6 @@ async function showUserName() {
     console.log(data);
     console.log(data.user.username);
     document.getElementById("username").innerHTML = data.user.username;
-    // muita hakuja ja tietoja sivulle, kuten email ym. mitä halutaan näyttää
   });
 }
 
@@ -275,7 +274,7 @@ saveEntries.addEventListener("submit", function (evt) {
   editEntry();
   editModal.style.display = "none";
   editOverlay.style.display = "none";
- // location.reload();
+  location.reload();
 });
 
 

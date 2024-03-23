@@ -1,9 +1,8 @@
 import './home.css';
 import { fetchData } from './fetch.js';
 
-// LOGOUT 
+// Logout 
 const logout = document.querySelector('.activelogout');
-const noNewEntry = document.querySelector('.no');
 
 const handleLogout = function(evt) {
   evt.preventDefault();
@@ -11,11 +10,29 @@ const handleLogout = function(evt) {
 };
 
 logout.addEventListener('click', handleLogout);
-noNewEntry.addEventListener('click', handleLogout);
+
+
+// Get username
+document.addEventListener("DOMContentLoaded", showUserName);
+
+async function showUserName() {
+  const url = "http://localhost:3000/api/auth/me";
+  let token = localStorage.getItem("token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+  fetchData(url, options).then((data) => {
+    console.log(data);
+    console.log(data.user.username);
+    document.getElementById("username").innerHTML = data.user.username;
+  });
+}
 
 // GO TO ENTRIES
-const pastBtn = document.querySelector('.pastBtn');
-const pastNav = document.querySelector('.pastNav');
+const pastBtn = document.querySelector('.past');
 
 const goToPastEntries = function(evt) {
   evt.preventDefault();
@@ -23,7 +40,6 @@ const goToPastEntries = function(evt) {
 };
 
 pastBtn.addEventListener('click', goToPastEntries);
-pastNav.addEventListener('click', goToPastEntries);
 
 // NEW DIARY ENTRY
 // haetaan nappi josta lähetetään formi ja luodaan käyttäjä
@@ -116,7 +132,7 @@ async function postData(url, options = {}) {
 // POPUP HANDLING
 const popup = document.getElementById('popup');
 const overlay = document.getElementById('overlay');
-const openPopupBtn = document.querySelector('.yes');
+const openPopupBtn = document.querySelector('.new');
 const closePopupBtn = document.getElementById('closePopup');
 const createEntryBtn = document.querySelector('.createEntry');
 
