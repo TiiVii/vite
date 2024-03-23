@@ -24,20 +24,20 @@ const logout = document.querySelector(".activelogout");
 
 const handleLogout = function (evt) {
   evt.preventDefault();
-  window.location.href = "login.html";
+  window.location.href = "home.html";
 };
 
 logout.addEventListener("click", handleLogout);
 
-// GO TO HOME
-const homeBtn = document.querySelector(".home");
+// GO TO home
+const home = document.querySelector(".home");
 
-const goHome = function (evt) {
+const gohome = function (evt) {
   //   evt.preventDefault();
   window.location.href = "home.html";
 };
 
-homeBtn.addEventListener("click", goHome);
+home.addEventListener("click", gohome);
 
 // GET USERNAME
 document.addEventListener("DOMContentLoaded", showUserName);

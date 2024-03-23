@@ -1,40 +1,32 @@
-/* general styles */
+/* General */
 :root {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Courier New', Courier, monospace; /* Retro font */
+    line-height: 1.6;
 }
 
 * {
     box-sizing: border-box;
-    margin: 0;
 }
 
 body {
     min-width: 320px;
     min-height: 100vh;
     margin: 16px;
-    background-color: aliceblue;
-    background-image: url(bgimage.webp);
+    background-color: #be9b7b;
+    background-image: url(retro.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 
-/* navigation styles */
+/* Navigation */
 ul {
     list-style-type: none;
     margin: 0;
     padding: 10px;
     border-radius: 5px;
     overflow: hidden;
-    background-color: #29333C;
+    background-color: #4b3832;
 }
 
 li {
@@ -43,19 +35,19 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: #fff4e6;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover {
-    color: white;
+    color: #fff4e6;
     border-radius: 10px;
 }
 
 li a:hover:not(.active) {
-    background-color: #5D7283;
+    background-color:#854442;
     border-radius: 10px;
 }
 
@@ -64,33 +56,30 @@ li a:hover:not(.active) {
 }
 
 
-/* headings */
-h1 {
+
+/* Headings */
+h2 {
     margin: 60px;
     text-align: center;
     font-size: 40px;
     color: #29333C;
-}
-
-h2 {
-    margin: 30px;
-    text-align: center;
-    font-size: 30px;
-    color: #29333C;
+    box-shadow: 0 0 100px rgb(237, 230, 230);
+    border-radius: 20px;
 }
 
 .user {
     margin: 10px;
     text-align: center;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 25px;
+    font-weight: bolder;
     color: #29333C;
+    padding: 5%;
 }
 
 
-/* entries table styling */
+/* Entries table */
 .tableWrapper {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     border-radius: 10px;
     overflow: hidden;
@@ -101,9 +90,9 @@ h2 {
     width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
-    background-color: #83949E;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff4e6;
+    border-radius: 20px;
+    box-shadow: 0 0 100px #fff4e6(0, 0, 0, 1);
 }
 
 .entriesTable th,
@@ -113,8 +102,8 @@ h2 {
 }
 
 .entriesTable th {
-    background-color: #29333C;
-    color: #f2f2f2;
+    background-color: #854442;
+    color: #fff4e6;
     font-weight: 200;
     font-size: 18px;
 }
@@ -122,15 +111,12 @@ h2 {
 .entriesTable tr {
     font-weight: 100;
     font-size: 15px;
-    color: #050505;
+    color: #3c2f2f;
 }
 
 .tableBody {
     text-align: center;
-}
-
-.tableBody tr:nth-child(even) {
-    background-color: #dbe2e4;
+    font-weight: bold;
 }
 
 .entriesTable th:nth-child(5),
@@ -142,15 +128,14 @@ h2 {
 }
 
 
-/* edit entries buttons */
+/* Edit buttons */
 .editEntries {
     display: flex;
     justify-content: center;
     text-align: center;
     padding-top: 40px;
-    color: #29333C;
+    color: #3c2f2f;
     margin: 30px;
-}
 
 .editEntries h3 {
     margin: 10px 30px;
@@ -159,9 +144,9 @@ h2 {
 .editEntries button {
     cursor: pointer;
     padding: 15px 28px;
-    border: 2px solid #29333C;
+    border: 2px solid #be9b7b;
     border-radius: 17px;
-    background-color: #29333C;
+    background-color: 	#4b3832;
     color: #f2f2f2;
     margin: 0 10px;
     font-size: 16px;
@@ -173,8 +158,8 @@ h2 {
 }
 
 .editEntries button:hover {
-    background-color: #5D7283;
-    border: 2px solid #5D7283;
+    background-color: #854442;
+    border: 2px solid #f2f2f2;
 }
 
 
@@ -204,7 +189,7 @@ h2 {
 }
 
 .deleteForm {
-    background: #29333C;
+    background: #854442;
     max-width: 400px;
     margin: 0 auto;
     padding: 10px;

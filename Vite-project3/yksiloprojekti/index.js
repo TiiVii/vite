@@ -60,7 +60,7 @@ createUser.addEventListener('click', async (evt) => {
 const loginUser = document.querySelector('.loginuser');
 loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  console.log('Ny mennään sisään');
+  console.log('Going inside');
 
   const url = 'http://127.0.0.1:3000/api/auth/login';
 

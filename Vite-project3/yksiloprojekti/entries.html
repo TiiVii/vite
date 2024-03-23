@@ -11,18 +11,12 @@
 <body>
     <ul class="navigation">
         <li><a href="#home" class="home">New entry</a></li>
-        <li class="pastNav"><a href="#entries">Past entries</a></li>
         <li style="float: right" class="activelogout"><a href="">Logout</a></li>
     </ul>
 
-    <h1>
-        Mood Day <br>
-        Past Entries
-    </h1>
+    <h2>Mood Day</h2>
 
-    <div class="user">Hi <span id="username">NIMI TÄHÄN</span>!</div>
-
-    <h2>Here are your past entries:</h2>
+    <div class="user">Welcome ✨<span id="username">NAME</span>✨ <br>here are your past entries:</div>
 
     <div class="tableWrapper">
         <table class="entriesTable">
@@ -38,19 +32,17 @@
             </thead>
             <tbody class="tableBody">
                 <!-- tänne haetaan kaikki merkinnät -->
-                <!-- # Get all entries -->
-                <!-- GET http://127.0.0.1:3000/api/entries -->
             </tbody>
         </table>
     </div>
 
     <div class="editEntries">
         <div class="editEntry">
-            <h3>Edit an entry?</h3>
+            <h3>Edit an entry</h3>
             <button class="editBtn">edit</button>
         </div>
         <div class="deleteEntry">
-            <h3>Delete an entry?</h3>
+            <h3>Delete an entry</h3>
             <button class="deleteBtn">delete</button>
         </div>
     </div>
