@@ -48,7 +48,7 @@ async function showUserName() {
   const options = {
     method: "GET",
     headers: {
-      Authorization: "Bearer: " + token,
+      Authorization: "Bearer " + token,
     },
   };
   fetchData(url, options).then((data) => {
@@ -66,11 +66,12 @@ async function getEntries() {
   console.log("Haetaa kaikki käyttäjät");
   const url = "http://127.0.0.1:3000/api/entries";
   let token = localStorage.getItem("token");
+  console.log(token);
 
   const options = {
     method: "GET",
     headers: {
-      Authorization: "Bearer: " + token,
+      Authorization: "Bearer " + token,
     },
   };
 
@@ -142,8 +143,7 @@ function createTable(data) {
 // EDIT AN ENTRY
 // get specific entry by id
 async function specificEntry(evt) {
-  console.log("Muokataan tietoa");
-  console.log(evt);
+  console.log("Getting info");
 
   // Haetaan merkinnän tunniste eventistä
   const id = document.querySelector("#editId").value;
@@ -151,11 +151,11 @@ async function specificEntry(evt) {
 
   // Määritellään URL merkinnän hakemiseksi
   const url = `http://127.0.0.1:3000/api/entries/${id}`;
-  let token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const options = {
     method: "GET",
     headers: {
-      Authorization: "Bearer: " + token,
+      Authorization: "Bearer " + token,
     },
   };
 
@@ -168,54 +168,57 @@ async function specificEntry(evt) {
   }
 }
 
-// show popup for editing
-function showPrevData(data) {
-  // Show the edit popup
-  editPopup.style.display = "block";
-  editOverlay.style.display = "block";
+// // show popup for editing
+// function showPrevData(data) {
+//   // Show the edit popup
+//   editPopup.style.display = "block";
+//   editOverlay.style.display = "block";
 
-  // Set the values of the input fields in the modal
-  document.getElementById("editMood").value = data.mood;
-  document.getElementById("editCrying").value = data.crying;
-  document.getElementById("editBreakdowns").value = data.breakdowns;
-  document.getElementById("editNotes").value = data.notes;
-}
+//   // Set the values of the input fields in the modal
+//   document.getElementById("editMood").value = data.mood;
+//   document.getElementById("editCrying").value = data.crying;
+//   document.getElementById("editBreakdowns").value = data.breakdowns;
+//   document.getElementById("editNotes").value = data.notes;
+// }
 
 // edit specific entry
 async function editEntry(evt) {
-  const editId = document.querySelector("#editId").value;
+  const editId = parseInt(document.querySelector("#editId").value);
+  console.log(editId);
   console.log("Saving changes for entry ID: ", editId);
 
   // Get the updated values from the input fields
-  const updatedEntry = {
+  const updatedEntries = {
     mood: document.getElementById("editMood").value,
-    crying: document.getElementById("editCrying").value,
-    breakdowns: document.getElementById("editBreakdowns").value,
+    crying: parseInt(document.getElementById("editCrying").value),
+    breakdowns: parseInt(document.getElementById("editBreakdowns").value),
     notes: document.getElementById("editNotes").value,
   };
-
+  console.log(updatedEntries);
+  console.log("here")
   // Construct the URL for updating the entry
   const url = `http://127.0.0.1:3000/api/entries/${editId}`;
 
   // Retrieve the token from localStorage
   const token = localStorage.getItem("token");
+  console.log(token)
 
   // Set up the options for the PUT request
   const options = {
     method: "PUT",
+    body: JSON.stringify(updatedEntries),
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(updatedEntry),
   };
 
   // Send the PUT request to update the entry
-  fetchData(url, options)
-    .then((data) => {
+  fetchData(url, options).then((data) => {
+      console.log(data),
       console.log("Entry updated successfully:", data);
       // Optionally, you can reload the entries after updating
-      //   getEntries();
+      return data;
     })
     .catch((error) => {
       console.error("Error updating status:", error);
@@ -228,7 +231,6 @@ const editOverlay = document.getElementById("editOverlay");
 const openEditBtn = document.querySelector(".editBtn");
 const closeEditBtn = document.getElementById("closeEdit");
 const editForm = document.querySelector(".submitEdit");
-const saveEdits = document.querySelector(".saveEdits");
 
 openEditBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -241,23 +243,11 @@ closeEditBtn.addEventListener("click", function () {
   editOverlay.style.display = "none";
 });
 
-editForm.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  const editId = document.getElementById("editId").value;
-  editPopup.style.display = "none";
-  openEditModal(editId);
-});
-
-saveEdits.addEventListener("click", function (evt) {
-    evt.preventDefault();
-    const editId = document.getElementById("editId").value;
-    saveEntries(editId); 
-});
 
 // edit modal
 const editModal = document.getElementById("editModal");
 const closeModalBtn = document.querySelector(".closeModal");
-const editEntryForm = document.getElementById("editEntryForm");
+const saveEntries = document.getElementById("editEntryForm");
 
 function openEditModal(editId) {
   console.log("Opening edit modal for entry ID:", editId);
@@ -281,16 +271,25 @@ function openEditModal(editId) {
   editModal.style.display = "block";
 }
 
+editForm.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  const editId = document.getElementById("editId").value;
+  editPopup.style.display = "none";
+  openEditModal(editId);
+});
+
 closeModalBtn.addEventListener("click", function () {
   editModal.style.display = "none";
   editOverlay.style.display = "none";
 });
 
-editEntryForm.addEventListener("submit", function (evt) {
+saveEntries.addEventListener("submit", function (evt) {
   evt.preventDefault();
+  console.log("tää on se mitä")
   editEntry();
   editModal.style.display = "none";
 });
+
 
 // event listener for editing an entry
 // openEditBtn.addEventListener("click", showEntry, specificEntry);
@@ -362,48 +361,3 @@ deleteEntryBtn.addEventListener("click", function (evt) {
   deleteOverlay.style.display = "none";
   deleteEntry();
 });
-
-
-// Save edits
-
-async function saveEntries(editId) {
-    console.log("Saving changes for entry ID: ", editId);
-
-    // Get the updated values from the input fields
-    const updatedEntry = {
-        mood: document.getElementById("editMood").value,
-        crying: document.getElementById("editCrying").value,
-        breakdowns: document.getElementById("editBreakdowns").value,
-        notes: document.getElementById("editNotes").value,
-    };
-
-    // Construct the URL for updating the entry
-    const url = `http://127.0.0.1:3000/api/entries/${editId}`;
-
-    // Retrieve the token from localStorage
-    const token = localStorage.getItem("token");
-
-    // Set up the options for the PUT request
-    const options = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify(updatedEntry),
-    };
-
-    try {
-        // Send the PUT request to update the entry
-        const response = await fetch(url, options);
-        if (response.ok) {
-            console.log("Entry updated successfully");
-            // Optionally, you can reload the entries after updating
-            getEntries();
-        } else {
-            console.error("Failed to update entry:", response.statusText);
-        }
-    } catch (error) {
-        console.error("Error updating entry:", error);
-    }
-}
