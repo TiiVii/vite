@@ -9,6 +9,10 @@ window.addEventListener('load', () => {
 
 // USER CREATION
 const createUser = document.querySelector('.submit_user');
+const successOverlay = document.getElementById("successOverlay");
+const successPopup = document.getElementById("successPopup");
+const closeSuccessBtn = document.getElementById("closeSuccess");
+
 createUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Creating a new account');
@@ -47,13 +51,28 @@ createUser.addEventListener('click', async (evt) => {
   
 
 
-  try {
+  try { 
     const responseData = await fetchData(url, options);
     console.log(responseData);
+
+    // Check if registration was successful
+    if (responseData.message === 'new user created') {
+      successPopup.style.display = "block";
+      successOverlay.style.display = "block";
+    } else {
+      // Display any other response messages as alerts
+      alert("Something went wrong");
+    }
   } catch (error) {
     console.error(error);
-  }
-  
+    // Handle error if the request fails
+    alert('An error occurred. Please try again later.');
+  }}
+
+);// Close success entry popup
+closeSuccessBtn.addEventListener("click", function () {
+  successPopup.style.display = "none";
+  successOverlay.style.display = "none";
 });
 
 // LOGIN ja TOKEN
@@ -144,22 +163,6 @@ function clearLocalStorage() {
   localStorage.removeItem('token');
   localStorage.removeItem('user_id');
   logResponse('clearResponse', 'localStorage cleared!');
-}
+};
 
 
-//popup
-// success entry popup
-const openSuccessBtn = document.querySelector('.submit_user');
-const successOverlay = document.getElementById("successOverlay");
-const closesuccessBtn = document.getElementById("closeSuccess");
-
-openSuccessBtn.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  successPopup.style.display = "block";
-  successOverlay.style.display = "block";
-});
-
-closesuccessBtn.addEventListener("click", function () {
-  successPopup.style.display = "none";
-  successOverlay.style.display = "none";
-});
