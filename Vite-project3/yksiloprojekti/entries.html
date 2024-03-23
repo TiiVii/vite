@@ -10,13 +10,13 @@
 
 <body>
     <ul class="navigation">
-        <li><a href="#home" class="home">●__●</a></li>
+        <li><a href="#home" class="home">New entry</a></li>
         <li class="pastNav"><a href="#entries">Past entries</a></li>
         <li style="float: right" class="activelogout"><a href="">Logout</a></li>
     </ul>
 
     <h1>
-        Pahoinvointi Päiväkirja <br>
+        Mood Day <br>
         Past Entries
     </h1>
 
@@ -29,10 +29,10 @@
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Severity</th>
-                    <th>Triggers</th>
-                    <th>Duration</th>
-                    <th>Other symptoms</th>
+                    <th>Mood</th>
+                    <th>Crying</th>
+                    <th>Breakdowns</th>
+                    <th>Notes</th>
                     <th>id</th>
                 </tr>
             </thead>
@@ -87,23 +87,26 @@
             <!-- Edit Entry Form -->
             <form class="editEntryForm" id="editEntryForm">
                 <h4>Edit Entry</h4>
-                <label for="editSeverity">Severity</label>
-                <select id="editSeverity" name="severity" required>
+                <label for="editMood">Mood</label>
+                <select id="editMood" name="Mood" required>
                     <option value="">Choose one</option>
-                    <option value="Mild">Mild</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Severe">Severe</option>
+                    <option value="angry">angry</option>
+                    <option value="happy">happy</option>
+                    <option value="irritated">irritated</option>
+                    <option value="content">content</option>
+                    <option value="sad">sad</option>
+                    <option value="confused">confused</option>
                 </select><br>
 
-                <label for="editTriggers">Triggers</label>
-                <input type="text" id="editTriggers" name="triggers" required><br>
+                <label for="editCrying">Crying</label>
+                <input type="text" id="editCrying" name="Crying" required><br>
 
-                <label for="editDuration_hours">Duration (hours)</label>
-                <input type="number" id="editDuration_hours" name="duration_hours" min="0" required><br>
+                <label for="editBreakdowns">Breakdowns</label>
+                <input type="number" id="editBreakdowns" name="Breakdowns" min="0" required><br>
 
-                <label for="editOther_symptoms">Other Symptoms</label>
-                <textarea id="editOther_symptoms" name="other_symptoms" rows="4" required></textarea><br>
-                <input name="submit" type="submit" value="submit" class="submitEdits" />
+                <label for="editNotes">Notes</label>
+                <textarea id="editNotes" name="Notes" rows="4" required></textarea><br>
+                <input name="submit" type="submit" value="submit" class="saveEdits" />
             </form>
         </div>
     </div>

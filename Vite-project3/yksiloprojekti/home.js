@@ -52,10 +52,10 @@ async function gatherNewEntryData() {
   // Get form values
   const user_id = localStorage.getItem('user_id');
   const entry_date = document.getElementById("entry_date").value;
-  const severity = document.getElementById("severity").value;
-  const triggers = document.getElementById("triggers").value;
-  const duration_hours = document.getElementById("duration_hours").value;
-  const other_symptoms = document.getElementById("other_symptoms").value;
+  const mood = document.getElementById("mood").value;
+  const crying = document.getElementById("crying").value;
+  const breakdowns = document.getElementById("breakdowns").value;
+  const notes = document.getElementById("notes").value;
 
   // Get token from localStorage
   const token = localStorage.getItem('token');
@@ -68,10 +68,10 @@ async function gatherNewEntryData() {
   const newEntrydata = {
     user_id: user_id,
     entry_date: entry_date,
-    severity: severity,
-    triggers: triggers,
-    duration_hours: duration_hours,
-    other_symptoms: other_symptoms,
+    mood: mood,
+    crying: crying,
+    breakdowns: breakdowns,
+    notes: notes,
   };
   
   console.log(newEntrydata)
@@ -101,6 +101,7 @@ async function postNewEntry(options) {
       console.error('Error:', error);
     });
 };
+
 
 // Function to send POST request using fetch
 async function postData(url, options = {}) {
