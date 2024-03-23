@@ -60,8 +60,6 @@ createUser.addEventListener('click', async (evt) => {
 const loginUser = document.querySelector('.loginuser');
 loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  console.log('Going inside');
-
   const url = 'http://127.0.0.1:3000/api/auth/login';
 
   // get form and it's values
@@ -83,21 +81,23 @@ loginUser.addEventListener('click', async (evt) => {
     body: JSON.stringify(data),
   };
 
-  fetchData(url, options).then((data) => {
-    console.log(data);
-    console.log(data.token);
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user_id", data.user.user_id);
-
-    if (data.token == undefined) {
-      alert('Username or the password is wrong')
+  try {
+    const responseData = await fetchData(url, options);
+    console.log(responseData);
+    
+    if (responseData.token === undefined) {
+      alert('Username or password is incorrect');
     } else {
-      // alert('Hienosti kirjauduit sisään good job!')
+      localStorage.setItem("token", responseData.token);
+      localStorage.setItem("user_id", responseData.user.user_id);
       window.location.href = 'home.html';
-    };
-
-    logResponse('loginResponse', `localStorage set with token value: ${data.token}`);
-  });
+      logResponse('loginResponse', `localStorage set with token value: ${responseData.token}`);
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle error if the request fails
+    alert('An error occurred. Please try again later.');
+  }
 });
 
 
