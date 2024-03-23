@@ -168,19 +168,6 @@ async function specificEntry(evt) {
   }
 }
 
-// // show popup for editing
-// function showPrevData(data) {
-//   // Show the edit popup
-//   editPopup.style.display = "block";
-//   editOverlay.style.display = "block";
-
-//   // Set the values of the input fields in the modal
-//   document.getElementById("editMood").value = data.mood;
-//   document.getElementById("editCrying").value = data.crying;
-//   document.getElementById("editBreakdowns").value = data.breakdowns;
-//   document.getElementById("editNotes").value = data.notes;
-// }
-
 // edit specific entry
 async function editEntry(evt) {
   const editId = parseInt(document.querySelector("#editId").value);
@@ -288,6 +275,8 @@ saveEntries.addEventListener("submit", function (evt) {
   console.log("tää on se mitä")
   editEntry();
   editModal.style.display = "none";
+  editOverlay.style.display = "none";
+  location.reload();
 });
 
 
