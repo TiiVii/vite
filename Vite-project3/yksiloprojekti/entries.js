@@ -43,7 +43,7 @@ home.addEventListener("click", gohome);
 document.addEventListener("DOMContentLoaded", showUserName);
 
 async function showUserName() {
-  const url = "http://localhost:3000/api/auth/me";
+  const url = "https://teevee.swedencentral.cloudapp.azure.com/api/auth/me";
   let token = localStorage.getItem("token");
   const options = {
     method: "GET",
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", getEntries);
 
 async function getEntries() {
   console.log("Haetaa kaikki käyttäjät");
-  const url = "http://127.0.0.1:3000/api/entries";
+  const url = "https://teevee.swedencentral.cloudapp.azure.com/api/entries";
   let token = localStorage.getItem("token");
   console.log(token);
 
@@ -149,7 +149,7 @@ async function specificEntry(evt) {
   console.log(id);
 
   // Määritellään URL merkinnän hakemiseksi
-  const url = `http://127.0.0.1:3000/api/entries/${id}`;
+  const url = `https://teevee.swedencentral.cloudapp.azure.com/api/entries/${id}`;
   const token = localStorage.getItem("token");
   const options = {
     method: "GET",
@@ -183,7 +183,7 @@ async function editEntry(evt) {
   console.log(updatedEntries);
   console.log("here")
   // Construct the URL for updating the entry
-  const url = `http://127.0.0.1:3000/api/entries/${editId}`;
+  const url = `https://teevee.swedencentral.cloudapp.azure.com/api/entries/${editId}`;
 
   // Retrieve the token from localStorage
   const token = localStorage.getItem("token");
@@ -299,7 +299,7 @@ async function deleteEntry(evt) {
   }
 
   // Construct the URL for deleting the entry
-  const url = `http://127.0.0.1:3000/api/entries/${deleteId}`;
+  const url = `https://teevee.swedencentral.cloudapp.azure.com/api/entries/${deleteId}`;
 
   // Retrieve the token from localStorage
   const token = localStorage.getItem("token");

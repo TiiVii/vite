@@ -16,7 +16,7 @@ logout.addEventListener('click', handleLogout);
 document.addEventListener("DOMContentLoaded", showUserName);
 
 async function showUserName() {
-  const url = "http://localhost:3000/api/auth/me";
+  const url = "https://teevee.swedencentral.cloudapp.azure.com/api/auth/me";
   let token = localStorage.getItem("token");
   const options = {
     method: "GET",
@@ -43,7 +43,7 @@ pastBtn.addEventListener('click', goToPastEntries);
 
 // NEW DIARY ENTRY
 // haetaan nappi josta lähetetään formi ja luodaan käyttäjä
-const url = 'http://127.0.0.1:3000/api/entries';
+const url = 'https://teevee.swedencentral.cloudapp.azure.com/api/entries';
 
 const createEntry = document.querySelector('.createEntry');
 createEntry.addEventListener('click', async (evt) => {
@@ -109,7 +109,7 @@ async function gatherNewEntryData() {
 // Function to send POST request
 async function postNewEntry(options) {
   // Define POST request and send it
-  postData('http://localhost:3000/api/entries', options) 
+  postData('https://teevee.swedencentral.cloudapp.azure.com/api/entries', options) 
     .then(data => {
       console.log('Response data:', data);
     })

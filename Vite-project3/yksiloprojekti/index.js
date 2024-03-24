@@ -17,7 +17,7 @@ createUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Creating a new account');
 
-  const url = 'http://127.0.0.1:3000/api/users';
+  const url = 'https://teevee.swedencentral.cloudapp.azure.com/api/users';
 
   // get form and check if valid
   const form = document.querySelector('.create_user');
@@ -79,7 +79,7 @@ closeSuccessBtn.addEventListener("click", function () {
 const loginUser = document.querySelector('.loginuser');
 loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  const url = 'http://127.0.0.1:3000/api/auth/login';
+  const url = 'https://teevee.swedencentral.cloudapp.azure.com/api/auth/login';
 
   // get form and it's values
   const form = document.querySelector('.login_user');
@@ -125,7 +125,7 @@ const meRequest = document.querySelector('.loginuser');
 meRequest.addEventListener('click', async () => {
   console.log('Testing token and retrieving the user info');
 
-  const url = 'http://127.0.0.1:3000/api/auth/me';
+  const url = 'https://teevee.swedencentral.cloudapp.azure.com/api/auth/me';
   const myToken = localStorage.getItem('token');
   console.log(myToken)
 
